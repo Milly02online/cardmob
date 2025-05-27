@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import {
-    StyleSheet,
-    Text,
-    View,
-    Button,
-    Image,
-    TextInput,
-    FlatList,
-} from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TextInput, FlatList } from 'react-native';
 
 export default function App() {
     const [counter, setCounter] = useState(0);
