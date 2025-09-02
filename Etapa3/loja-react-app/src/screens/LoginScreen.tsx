@@ -1,5 +1,5 @@
 import React, { use, useState }from "react";
-import { View, TextInput, Button, StyleSheet, Text } from "react-native";
+import { View, TextInput, Button, StyleSheet, Text, SafeAreaView } from "react-native";
 
 import { fakeLogin } from "../services/authService";
 import { useAuth } from "../contexts/AuthContext";
@@ -22,40 +22,42 @@ export default function LoginScreen({ navigation }: any) {
     };
 
     return (
-        <View style={styles.container}>
-            <Text>Email:</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Email"
-                value={email}
-                onChangeText={setEmail}
-                autoCapitalize="none"
-            />
-            <Text>Senha:</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Senha"
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry
-            />
-            { error ?
-                <Text
-                    style={{ color: 'red' }}
-                >
-                {error}
-                </Text> :
-                null
-            }
-            <Button 
-                title="Entrar"
-                onPress={handleLogin}
-            />
-            <Button
-                title="Registrar"
-                onPress={ () => navigation.navigate('Register')}
-            />
-        </View>
+        <SafeAreaView style={styles.container}>
+            <View>
+                <Text>Email:</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Email"
+                    value={email}
+                    onChangeText={setEmail}
+                    autoCapitalize="none"
+                />
+                <Text>Senha:</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Senha"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry
+                />
+                { error ?
+                    <Text
+                        style={{ color: 'red' }}
+                    >
+                    {error}
+                    </Text> :
+                    null
+                }
+                <Button 
+                    title="Entrar"
+                    onPress={handleLogin}
+                />
+                <Button
+                    title="Registrar"
+                    onPress={ () => navigation.navigate('Register')}
+                /> 
+            </View>      
+        </SafeAreaView>
     )
 }
 
