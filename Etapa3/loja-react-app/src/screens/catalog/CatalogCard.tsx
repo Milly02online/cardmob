@@ -16,7 +16,7 @@ const CatalogCard = ({ product, onBuyPress } : any ) => {
                 <View style={styles.buttonsContainer}>
                     <Button 
                         title="Comprar"
-                        color="#28A745"
+                        color="darkblue"
                         onPress={onBuyPress}
                     />
                 </View>
@@ -33,16 +33,38 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 15,
         marginBottom: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
+        shadowColor: 'darkblue', //'#000'
+        shadowOffset: { width: 0, height: 2},
         shadowOpacity: 0.2,
         shadowRadius: 3,
         elevation: 3,
     },
-    image: {},
-    details: {},
-    name: {},
-    description: {},
-    price: {},
-    buttonsContainer: {}
-})
+    image: {
+        width: '100%',
+        height: 200,
+        borderRadius: 8,
+        borderWidth: 2,
+        borderColor: 'darkblue', //'#ddd
+    },
+    details: {
+        paddingHorizontal: 10,
+    },
+    name: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    description: {
+        fontSize: 14,
+        color: '#555',
+    },
+    price: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'darkblue',
+        marginVertical: 10,
+    },
+    buttonsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    }
+});
