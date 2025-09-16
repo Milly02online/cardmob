@@ -4,6 +4,7 @@ import Constants from 'expo-constants';
 const { apiUrl } = Constants.expoConfig?.extra || {};
 
 export async function getCatalog(): Promise<any[]> {
+    console.log(apiUrl)
     try {
         const response = await fetch(`${apiUrl}/api/catalog`);
         const data = await response.json();
