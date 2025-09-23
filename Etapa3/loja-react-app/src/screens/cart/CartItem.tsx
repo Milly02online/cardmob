@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
+import { useShop } from '../../contexts/ShopContext';
+
 const CartItem = ({ item }: any) => {
   //Para fazer: implementar o context para persistir dados do carrinho
+  const { addToCart } = useShop();
 
   const handleRemove = () => {
     console.log('item excluído');
@@ -17,7 +20,7 @@ const CartItem = ({ item }: any) => {
             <Text style={styles.price}>R$ {(item.price * item.quantity).toFixed(2)}</Text>
 
             <TouchableOpacity 
-                onPress={() => handleRemove()} 
+                onPress={() => addToCart(item)} 
                 style={styles.button}
             >
                 <Text style={styles.buttonText}>-</Text>
@@ -26,7 +29,7 @@ const CartItem = ({ item }: any) => {
                 <Text style={styles.quantityValue}>{item.quantity}</Text>
                 
             <TouchableOpacity 
-                onPress={() => handleRemove()} 
+                onPress={() => addToCart(item)} 
                 style={styles.button}
             >
                 <Text style={styles.buttonText}>+</Text>
