@@ -38,9 +38,9 @@ const CartItem = ({ item }: any) => {
 
             <TouchableOpacity 
                 onPress={() => handleRemove(item)} 
-                    style={styles.button}
+                    style={styles.removeButton}
                 >
-                <Text style={styles.buttonText}>Remover</Text>
+                <Text style={styles.removeButtonText}>Remover</Text>
             </TouchableOpacity>
         </View>
       </View>
@@ -63,23 +63,43 @@ const styles = StyleSheet.create({
         height: 100,
         borderRadius: 8,
         borderColor: 'darkblue',
+        marginRight: 10,
     },
     name: {
-        
+        fontSize: 20,
     },
     quantity: {
-        
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginVertical: 5,
     },
     price: {
-        
+        fontSize: 18,
+        color: 'darkblue',
     },
     button: {
-
+        backgroundColor: 'darkblue',
+        borderRadius: 5,
+        padding: 5,
+        marginHorizontal: 5,
     },
     buttonText: {
-
+        fontSize: 16,
+        color: '#fff',
+    },
+    removeButton: {
+        backgroundColor: 'lightblue',
+        borderRadius: 5,
+        padding: 10,
+        marginLeft: 10,
+    },
+    removeButtonText: {
+        textAlign: 'center',
+        color: '#fff',
+        fontSize: 16,
     },
     quantityValue: {
-
+        marginHorizontal: 10,
+        fontSize: 18,
     },
 })
