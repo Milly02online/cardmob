@@ -29,9 +29,15 @@ export const ShopProvider: React.FC<{ children: React.ReactNode}> = ({ children 
         )
     }
 
+    const removeFromCart = (itemId: number) => {
+        setCartItems((prevItems) => 
+            prevItems.filter(item => item.id !== itemId)
+        )
+    }
+
     return (
         <ShopContext
-            value={ { cartItems, addToCart} }
+            value={ { cartItems, addToCart, removeFromCart} }
         >
             {children}
         </ShopContext>
