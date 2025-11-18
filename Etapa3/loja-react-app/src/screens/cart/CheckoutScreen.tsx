@@ -34,7 +34,9 @@ const CheckoutScreen = ( {navigation}: any) => {
         alert('Pedido confirmado!');
         clearCart();
         console.log(customerInfo);
-        navigation.replace('Tabs', {screen: 'Catalog'});
+        // navigation.navigate('Catalog');
+        // navigation.replace('Tabs', {screen: 'Catalog'});
+        navigation.navigate('OrderInfo');
     }
 
     return (

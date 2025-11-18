@@ -4,7 +4,7 @@ import { View, TextInput, Button, StyleSheet, Text, SafeAreaView} from "react-na
 import { requestRegister } from "../services/authService"; // modificado
 // import { useAuth } from "../contexts/AuthContext";
 
-export default function registerScreen({ navigation } : any) {
+export default function RegisterScreen({ navigation } : any) {
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
