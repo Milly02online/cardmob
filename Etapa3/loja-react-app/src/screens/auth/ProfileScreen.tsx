@@ -3,6 +3,7 @@ import { View, Text, Button, StyleSheet, Image } from "react-native"; // modific
 
 import { useTheme } from '../../contexts/ThemeContext'
 import { useAuth } from '../../contexts/AuthContext';
+
 import { requestProfileById } from "../../services/profileService"; // novo 
 
 function ProfileScreen({ navigation }: any) {
@@ -15,7 +16,7 @@ function ProfileScreen({ navigation }: any) {
         const fetchProfile = async () => {
             try {
                 console.log(userData); //novo
-                const user = await requestProfileById(1);
+                const user = await requestProfileById(userData?.id); //correção
                 console.log(user);
                 setUser(user);
                 console.log('Carregou o usuário!');
