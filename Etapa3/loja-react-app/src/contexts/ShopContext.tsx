@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+
 import * as ImagePicker from 'expo-image-picker';
 
 type ShopContextType = {
@@ -12,7 +13,7 @@ type ShopContextType = {
 
 export const ShopContext = createContext<ShopContextType>({} as ShopContextType);
 
-export const ShopProvider: React.FC<{ children: React.ReactNode}> = ({ children }) => {
+export const ShopProvider: React.FC<{ children: React.ReactNode}> = ({ children}) => {
     const [cartItems, setCartItems] = useState<any[]>([]);
     const [orderInfo, setOrderInfo] = useState<any[]>([]);
     const [editingItem, setEditingItem] = useState<any[]>([]);
@@ -33,14 +34,15 @@ export const ShopProvider: React.FC<{ children: React.ReactNode}> = ({ children 
                 else {
                     return [...prevItems, {...item, quantity}];
                 }
+
             }
         )
     }
 
     const removeFromCart = (itemId: number) => {
-        setCartItems((prevItems) => 
+        setCartItems((prevItems) =>  
             prevItems.filter(item => item.id !== itemId)
-        )
+        );
     }
 
     const getTotalPrice = () => {
@@ -58,7 +60,7 @@ export const ShopProvider: React.FC<{ children: React.ReactNode}> = ({ children 
     }
 
     // Image picker.
-    const pickImage = async () => {
+    const pickImage = async (): Promise<string> => {
         const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (status === 'granted') {
             let result = await ImagePicker.launchImageLibraryAsync({
@@ -70,6 +72,7 @@ export const ShopProvider: React.FC<{ children: React.ReactNode}> = ({ children 
                 const imageUri = result.assets[0].uri;
                 console.log('Image uri', imageUri);
                 setNewImage(imageUri);
+                return Promise.resolve(imageUri);
             }
             else {
                 console.log('A seleção de imagem foi cancelada');
@@ -86,7 +89,7 @@ export const ShopProvider: React.FC<{ children: React.ReactNode}> = ({ children 
         >
             {children}
         </ShopContext>
-    )
+    );
 }
 
 export const useShop = () => useContext(ShopContext);
